@@ -3,7 +3,7 @@
   "compilerOptions": {
     "module": "esnext",
     "skipLibCheck": true,
-    "removeComments": true,
+    "removeComments": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
@@ -14,7 +14,8 @@
     ],
     "moduleResolution": "node",
     "baseUrl": "src",
-    "allowJs": true
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": [
     "./src/**/*.ts",

@@ -1,11 +1,5 @@
 <template>
-  <h1>${message}</h1>
-
-  <button click.trigger="loadFeature1()">loadFeature1</button>
+  <a repeat.for="nav of router.navigation" href.bind="nav.href">${nav.title}</a>
 
   <router-view></router-view>
-
-  <a href="#test-route-1">Test</a>
-  <a href="#test-route-2">Test2</a>
-  <a href="#">Home</a>
 </template>
