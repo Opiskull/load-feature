@@ -1,4 +1,3 @@
-import { initialState } from './features/state';
 import { Aurelia } from 'aurelia-framework'
 import environment from './environment';
 import { PLATFORM } from 'aurelia-pal';
