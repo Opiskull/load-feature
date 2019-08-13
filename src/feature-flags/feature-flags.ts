@@ -1,8 +1,6 @@
-import { FeatureFlagsService } from './feature-flags-service';
-import { State } from './state';
 import { FeatureFlag } from './feature-flag';
 import { customElement, view, bindable } from 'aurelia-framework';
-import { IFeatureFlag, EnabledFeatures } from './interfaces';
+import { IFeatureFlag, IEnabledFeatures } from './interfaces';
 import template from "./feature-flags.html";
 import { EventAggregator } from 'aurelia-event-aggregator';
 
@@ -10,7 +8,7 @@ import { EventAggregator } from 'aurelia-event-aggregator';
 @customElement("feature-flags")
 export class FeatureFlags {
   @bindable({ changeHandler: 'enabledOrFeatureChanged' }) public features: IFeatureFlag[];
-  @bindable({ changeHandler: 'enabledOrFeatureChanged' }) public enabled: EnabledFeatures;
+  @bindable({ changeHandler: 'enabledOrFeatureChanged' }) public enabled: IEnabledFeatures;
 
   constructor(private eventAggregator: EventAggregator) {
 

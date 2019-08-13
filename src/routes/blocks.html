@@ -1,0 +1,5 @@
+<template>
+  <div repeat.for="tile of tiles">
+    <compose view-model.bind="getDisplayVm(tile)" model.bind="tile"></compose>
+  </div>
+</template>

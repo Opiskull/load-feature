@@ -1,12 +1,20 @@
-export interface IFeatureFlag {
-  id: string;
-  name: string;
+import { IFeatureDescription } from './../feature-flags/interfaces';
+export interface IContentBlock {
+  type: string;
+  edit: any;
+  display: any;
+  dependsOnSetting?: any;
   description: string;
-  enabled: boolean;
 }
 
-export interface IFeature extends IFeatureFlag {
-  initialize: () => Promise<void>;
+export interface ISettingsBlock {
+  id: string;
+  setting: any;
 }
 
-export type EnabledFeatures = { [featureId: string]: boolean };
+export interface IFeature extends IFeatureDescription {
+  contents?: IContentBlock[];
+  dependOnSetting?: any;
+  settings?: ISettingsBlock[];
+  initialize?(): Promise<void>;
+}

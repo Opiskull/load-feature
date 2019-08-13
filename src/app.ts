@@ -12,6 +12,8 @@ export class App {
     config.map([
       {
         route: ['features', ''], moduleId: PLATFORM.moduleName('./routes/features'), title: 'Features', nav: true
+      }, {
+        route: ['blocks'], moduleId: PLATFORM.moduleName('./routes/blocks'), title: 'Blocks', nav: true
       }
     ]);
     this.router = router;

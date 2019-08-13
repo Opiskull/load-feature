@@ -1,9 +1,9 @@
-import { FeatureFlagsService } from './../features/feature-flags-service';
-import { State } from './../features/state';
-import { FeatureService } from '../features/feature-service';
+import { FeatureFlagsService } from '../feature-flags/feature-flags-service';
+import { State } from '../feature-flags/state';
+import { FeatureService } from '../feature-flags/feature-service';
 import { autoinject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
-import { EnabledFeatures } from 'features/interfaces';
+import { IEnabledFeatures, IFeatureFlag } from 'feature-flags/interfaces';
 
 @autoinject()
 export class Features {
@@ -12,9 +12,9 @@ export class Features {
     private featureFlagsService: FeatureFlagsService, private eventAggregator: EventAggregator) { }
 
   async attached() {
-    this.state.features = await this.featureService.getAllAvailable();
+    this.state.features = (await this.featureService.getAllAvailable()) as IFeatureFlag[];
     this.state.enabled = this.featureFlagsService.load();
-    this.eventAggregator.subscribe("features:enabled", (enabled: EnabledFeatures) => {
+    this.eventAggregator.subscribe("features:enabled", (enabled: IEnabledFeatures) => {
       this.featureFlagsService.save(enabled);
     })
   }

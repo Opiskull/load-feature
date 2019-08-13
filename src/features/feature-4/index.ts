@@ -1,10 +1,6 @@
-import { Edit } from './edit';
-import { IFeatureFlag } from '../interfaces';
-import { PLATFORM } from 'aurelia-pal';
+import { IFeatureDescription } from "feature-flags/interfaces";
 
-PLATFORM.moduleName("./index");
-
-export const config: IFeatureFlag = {
+export const config: IFeatureDescription = {
   id: 'feature-4',
   name: 'feature-4',
   description: 'feature-4 description',
