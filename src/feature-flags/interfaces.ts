@@ -9,3 +9,9 @@ export interface IFeatureDescription {
 }
 
 export interface IEnabledFeatures { [featureId: string]: boolean };
+
+
+export interface FeatureFlagsState {
+  enabled: IEnabledFeatures;
+  features: IFeatureFlag[];
+}

@@ -1,3 +1,5 @@
+import { FeatureInitializer } from './features/feature-initializer';
+import { FeatureService } from './feature-flags/feature-service';
 import { autoinject } from 'aurelia-framework';
 import { PLATFORM } from 'aurelia-pal';
 
@@ -8,6 +10,10 @@ export class App {
   public message: string = 'Hello App!';
   public router: Router;
 
+  constructor(private featureService: FeatureService, private featureInitializer: FeatureInitializer) {
+
+  }
+
   configureRouter(config: RouterConfiguration, router: Router) {
     config.map([
       {
@@ -17,5 +23,10 @@ export class App {
       }
     ]);
     this.router = router;
+  }
+
+  public async activate() {
+    const features = await this.featureService.getAllAvailable();
+    await this.featureInitializer.initialize(...features);
   }
 }

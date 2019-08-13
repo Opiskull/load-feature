@@ -18,3 +18,8 @@ export interface IFeature extends IFeatureDescription {
   settings?: ISettingsBlock[];
   initialize?(): Promise<void>;
 }
+
+export interface FeaturesState {
+  contents: { [type: string]: IContentBlock }
+  settings: { [id: string]: ISettingsBlock }
+}

@@ -1,15 +1,18 @@
-import { IContentBlock, ISettingsBlock, IFeature } from './interfaces';
+import { State } from './../state';
+
+import { IFeature } from './interfaces';
+import { autoinject } from 'aurelia-framework';
+@autoinject()
 export class FeatureInitializer {
-  public contents: { [type: string]: IContentBlock } = {}
-  public settings: { [id: string]: ISettingsBlock } = {}
+  constructor(private state: State) { }
 
   public async initialize(...features: IFeature[]): Promise<void> {
     for (const feature of features) {
       if (feature.contents) {
-        feature.contents.forEach(c => this.contents[c.type] = c);
+        feature.contents.forEach(c => this.state.contents[c.type] = c);
       }
       if (feature.settings) {
-        feature.settings.forEach(s => this.settings[s.id] = s);
+        feature.settings.forEach(s => this.state.settings[s.id] = s);
       }
       if (feature.initialize) {
         await feature.initialize();

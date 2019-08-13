@@ -1,9 +1,9 @@
 import { FeatureFlagsService } from '../feature-flags/feature-flags-service';
-import { State } from '../feature-flags/state';
 import { FeatureService } from '../feature-flags/feature-service';
 import { autoinject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
-import { IEnabledFeatures, IFeatureFlag } from 'feature-flags/interfaces';
+import { IEnabledFeatures, IFeatureFlag } from '../feature-flags/interfaces';
+import { State } from "../state";
 
 @autoinject()
 export class Features {

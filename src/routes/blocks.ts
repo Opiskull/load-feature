@@ -1,5 +1,5 @@
-import { FeatureService } from './../feature-flags/feature-service';
-import { FeatureInitializer } from './../features/feature-initializer';
+import { State } from './../state';
+
 import { customElement } from "aurelia-framework";
 
 @customElement('blocks')
@@ -12,22 +12,17 @@ export class Blocks {
     { type: 'not-so-simple-block-1' }
   ]
 
-  constructor(private featureInitializer: FeatureInitializer, private featureService: FeatureService) {
+  constructor(private featureState: State) {
 
   }
 
   public getDisplayVm(tile: { type: string }) {
-    const content = this.featureInitializer.contents[tile.type];
+    const content = this.featureState.contents[tile.type];
 
     if (content == undefined) {
       throw Error("Invalid Type");
     }
 
     return content.display;
-  }
-
-  async activate() {
-    const features = await this.featureService.getAllAvailable();
-    await this.featureInitializer.initialize(...features);
   }
 }
